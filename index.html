@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VinoVeritas - Savor the Art of Wine</title>
+    
+    <!-- Google Fonts: Inter with better weights -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- NEW: Custom Tailwind Configuration (Modern Dark Theme) -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-dark': '#0f1419',     
+                        'brand-panel': 'rgba(30, 35, 48, 0.6)',   
+                        'brand-text': '#f5f7fa',     
+                        'brand-text-muted': '#b0b8c1',
+                        'brand-primary': '#ff4757',  
+                        'brand-gold': '#ffd700',    
+                    },
+                    fontFamily: {
+                        'serif': ['Inter', 'sans-serif'],
+                        'sans': ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                    },
+                },
+            },
+        };
+    </script>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="antialiased bg-brand-dark text-brand-text">
+
+    <!-- Enhanced Header with smooth interactions -->
+    <header class="sticky top-0 z-50">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <a href="#" class="nav-link text-3xl font-bold text-white transition-all duration-300 hover:scale-105" data-page="home">
+                    ✨ VinoVeritas
+                </a>
+
+                <!-- Desktop Nav -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#" class="nav-link text-brand-text-muted hover:text-brand-primary" data-page="home">Home</a>
+                    <a href="#" class="nav-link text-brand-text-muted hover:text-brand-primary" data-page="shop">Shop</a>
+                    <a href="#" class="nav-link text-brand-text-muted hover:text-brand-primary" data-page="membership">Membership</a>
+                    <a href="#" class="nav-link text-brand-text-muted hover:text-brand-primary" data-page="about">About</a>
+                    <a href="#" class="nav-link text-brand-text-muted hover:text-brand-primary" data-page="contact">Contact</a>
+                </div>
+
+                <!-- Icons -->
+                <div class="flex items-center space-x-4">
+                    <a href="#" class="nav-link relative text-brand-text-muted hover:text-brand-primary transition-all duration-300 hover:scale-110" data-page="cart">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                        </svg>
+                        <span id="cart-item-count" class="absolute -top-2 -right-2 bg-brand-primary text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center animate-pulse">0</span>
+                    </a>
+                    <!-- Mobile Menu Button -->
+                    <button id="mobile-menu-button" class="md:hidden text-brand-text-muted hover:text-brand-primary transition-all duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden py-4 border-t border-brand-panel">
+                <a href="#" class="nav-link block px-2 py-2 text-brand-text-muted hover:text-brand-primary" data-page="home">Home</a>
+                <a href="#" class="nav-link block px-2 py-2 text-brand-text-muted hover:text-brand-primary" data-page="shop">Shop</a>
+                <a href="#" class="nav-link block px-2 py-2 text-brand-text-muted hover:text-brand-primary" data-page="membership">Membership</a>
+                <a href="#" class="nav-link block px-2 py-2 text-brand-text-muted hover:text-brand-primary" data-page="about">About</a>
+                <a href="#" class="nav-link block px-2 py-2 text-brand-text-muted hover:text-brand-primary" data-page="contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content - Pages will be swapped here -->
+    <main>
+
+        <!-- Home Page  -->
+        <section id="page-home" class="page active">
+            <!-- Enhanced Hero Section with better visual hierarchy -->
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-24">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                    <!-- Left Column (Text) -->
+                    <div>
+                        <span class="text-xs font-bold text-brand-primary uppercase tracking-widest">✨ Since 2016</span>
+                        <h1 class="text-6xl md:text-7xl font-black text-white my-6 leading-tight">Excellent Red Wines</h1>
+                        <p class="text-lg text-brand-text-muted mb-8 leading-relaxed">
+                            After the harvest, the grapes are taken into a winery and prepared for primary ferment. At this stage, red wine making diverges from white wine making.
+                        </p>
+                        <ul class="space-y-4 text-brand-text-muted mb-10">
+                            <li class="flex items-center transform transition-all duration-300 hover:translate-x-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-brand-primary mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg> Chardonnay
+                            </li>
+                            <li class="flex items-center transform transition-all duration-300 hover:translate-x-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-brand-primary mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg> Sauvignon
+                            </li>
+                            <li class="flex items-center transform transition-all duration-300 hover:translate-x-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-brand-primary mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg> Merlot
+                            </li>
+                        </ul>
+                        <button class="nav-link btn-primary" data-page="shop">
+                            Explore Collection →
+                        </button>
+                    </div>
+                    <!-- Right Column (Image) -->
+                    <div class="flex items-center justify-center">
+                        <img src="image/Korta_Katarina_Wine_Labels_-_Igor_Manasteriotti-removebg-preview.png" alt="Wine bottle and glass" class="rounded-2xl shadow-2xl max-h-[70vh] w-auto transform transition-all duration-500 hover:scale-105 hover:shadow-[0_20px_50px_rgba(255,71,87,0.3)]">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Featured Collections with glassmorphism cards -->
+            <div class="py-24 bg-brand-dark">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-16">
+                        <span class="text-xs font-bold text-brand-primary uppercase tracking-widest">CURATED SELECTION</span>
+                        <h2 class="text-5xl font-black text-white mt-4 mb-6">Our Premium Collection</h2>
+                        <p class="text-lg text-brand-text-muted max-w-2xl mx-auto">Handpicked selections from the world's finest vineyards.</p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="featured-wines">
+                        <!-- Featured wines will be injected here by JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== Shop Page ===== -->
+        <section id="page-shop" class="page">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-24">
+                <h1 class="text-5xl font-bold text-center text-white mb-16">Our Wine Selection</h1>
+                
+                <!-- Filters & Search -->
+                <div class="flex flex-col md:flex-row justify-between items-center gap-6 mb-12">
+                    <div class="flex-grow w-full md:w-auto">
+                        <label for="search-bar" class="sr-only">Search Wines</label>
+                        <input type="text" id="search-bar" placeholder="Search by name, region, or grape..." class="form-input w-full">
+                    </div>
+                    <div class="flex flex-wrap justify-center gap-2">
+                        <button class="filter-btn btn-primary" data-category="all">All</button>
+                        <button class="filter-btn btn-secondary" data-category="Red">Red</button>
+                        <button class="filter-btn btn-secondary" data-category="White">White</button>
+                        <button class="filter-btn btn-secondary" data-category="Rosé">Rosé</button>
+                        <button class="filter-btn btn-secondary" data-category="Sparkling">Sparkling</button>
+                    </div>
+                </div>
+
+                <!-- Wine Grid -->
+                <div id="shop-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                    <!-- Wine cards will be injected by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!--Wine Details Page -->
+        <section id="page-details" class="page">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-24">
+                <!-- Content will be injected by JS -->
+                <div id="details-content">
+                    <!-- Loading... -->
+                </div>
+                <div class="mt-24">
+                    <h2 class="text-4xl font-bold text-white mb-12">You May Also Like</h2>
+                    <div id="recommendations-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                        <!-- Recommendation cards will be injected by JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Membership Page -->
+        <section id="page-membership" class="page">
+            <div class="bg-brand-panel py-24">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <h1 class="text-5xl font-bold text-white mb-6">Join the VinoVeritas Wine Club</h1>
+                    <p class="text-xl text-brand-text-muted mb-16 max-w-3xl mx-auto">Experience exclusive access to our finest vintages, private tastings, and member-only discounts. Elevate your wine journey with us.</p>
+
+                    <!-- Tiers -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                        <!-- Gold Tier -->
+                        <div class="bg-brand-dark rounded-lg shadow-lg p-8 border-t-4 border-brand-gold">
+                            <h2 class="text-3xl font-bold text-brand-gold mb-4">Gold</h2>
+                            <p class="text-brand-text-muted mb-6">For the enthusiastic explorer.</p>
+                            <ul class="text-left space-y-3 text-brand-text mb-8">
+                                <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-brand-gold mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg> 10% discount on all purchases</li>
+                                <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-brand-gold mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg> Quarterly curated 3-bottle box</li>
+                                <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-brand-gold mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg> Early access to new releases</li>
+                            </ul>
+                            <span class="text-4xl font-bold text-white">$50 <span class="text-lg font-normal">/ month</span></span>
+                        </div>
+                        <!-- Platinum Tier -->
+                        <div class="bg-brand-dark rounded-lg shadow-2xl p-8 border-t-4 border-gray-400 transform md:scale-110">
+                            <h2 class="text-3xl font-bold text-gray-400 mb-4">Platinum</h2>
+                            <p class="text-brand-text-muted mb-6">For the dedicated connoisseur.</p>
+                            <ul class="text-left space-y-3 text-brand-text mb-8">
+                                <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg> 15% discount on all purchases</li>
+                                <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg> Monthly curated 4-bottle box</li>
+                                <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg> Complimentary annual tasting</li>
+                                <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg> Access to library wines</li>
+                            </ul>
+                            <span class="text-4xl font-bold text-white">$100 <span class="text-lg font-normal">/ month</span></span>
+                        </div>
+                        <!-- Elite Tier -->
+                        <div class="bg-brand-dark rounded-lg shadow-lg p-8 border-t-4 border-brand-primary">
+                            <h2 class="text-3xl font-bold text-brand-primary mb-4">Elite</h2>
+                            <p class="text-brand-text-muted mb-6">For the ultimate aficionado.</p>
+                            <ul class="text-left space-y-3 text-brand-text mb-8">
+                                <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-brand-primary mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg> 20% discount on all purchases</li>
+                                <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-brand-primary mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg> Monthly premium 6-bottle box</li>
+                                <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-brand-primary mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg> Private vineyard tour & tasting</li>
+                                <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-brand-primary mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg> First allocation on all vintages</li>
+                            </ul>
+                            <span class="text-4xl font-bold text-white">$250 <span class="text-lg font-normal">/ month</span></span>
+                        </div>
+                    </div>
+
+                    <!-- Join Form -->
+                    <div class="max-w-xl mx-auto mt-20 bg-brand-panel p-8 rounded-lg shadow-xl">
+                        <h3 class="text-2xl font-bold text-white mb-6 text-center">Join the Waitlist</h3>
+                        <form id="join-form">
+                            <div class="mb-4">
+                                <label for="join-email" class="block text-sm font-medium text-brand-text-muted text-left">Email Address</label>
+                                <input type="email" id="join-email" name="email" required class="mt-1 form-input">
+                            </div>
+                            <button type="submit" class="btn-primary w-full">
+                                Join Now
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--About Page-->
+        <section id="page-about" class="page">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-24">
+                <div class="text-center max-w-3xl mx-auto">
+                    <h1 class="text-5xl font-bold text-white mb-6">Our Story</h1>
+                    <p class="text-xl text-brand-text-muted mb-12">VinoVeritas was born from a passion for the timeless craft of winemaking. Our mission is to connect discerning palates with extraordinary wines, sharing the stories of the land and the hands that shape each vintage.</p>
+                </div>
+                
+                <div class="flex flex-col md:flex-row items-center gap-12 mb-20">
+                    <div class="md:w-1/2">
+                        <img src="image/download__1_-removebg-preview.png" alt="Vineyard" class="rounded-lg shadow-xl">
+                    </div>
+                    <div class="md:w-1/2">
+                        <h2 class="text-3xl font-bold text-white mb-4">From Grape to Glass</h2>
+                        <p class="text-brand-text-muted mb-4 leading-relaxed">We believe that wine is more than just a drink; it's an experience. Our journey began three generations ago in the rolling hills of Napa Valley, with a simple promise: to honor the terroir and express its purest form in every bottle. We partner with small, family-owned vineyards that share our commitment to sustainable agriculture and meticulous craftsmanship.</p>
+                        <p class="text-brand-text-muted leading-relaxed">Every wine in our collection is personally selected by our team of sommeliers, ensuring it meets our exacting standards of quality, character, and value.</p>
+                    </div>
+                </div>
+
+                <!-- Team Bios -->
+                <div class="text-center">
+                    <h2 class="text-4xl font-bold text-white mb-12">Meet the Team</h2>
+                    <div class="flex flex-wrap justify-center gap-10">
+                        <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4">
+                            <img src="image/reiner.jpeg" alt="Team Member Jane Doe" class="rounded-full w-48 h-48 mx-auto mb-4 shadow-lg object-cover">
+                            <h3 class="text-2xl font-bold text-white">philipe andresson</h3>
+                            <p class="text-brand-gold font-medium">Founder & Chief Sommelier</p>
+                        </div>
+                        <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4">
+                            <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&q=80&w=300" alt="Team Member John Smith" class="rounded-full w-48 h-48 mx-auto mb-4 shadow-lg object-cover">
+                            <h3 class="text-2xl font-bold text-white">octara mendeve</h3>
+                            <p class="text-brand-gold font-medium">Head of Viticulture</p>
+                        </div>
+                        <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4">
+                            <image src="image/undefined (1).jpeg" alt="Team Member Elena Garcia" class="rounded-full w-48 h-48 mx-auto mb-4 shadow-lg object-cover">
+                            <h3 class="text-2xl font-bold text-white">Elena Garcia</h3>
+                            <p class="text-brand-gold font-medium">Director of Experiences</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--Contact Page-->
+        <section id="page-contact" class="page">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-24">
+                <h1 class="text-5xl font-bold text-center text-white mb-16">Get in Touch</h1>
+                <div class="flex flex-col lg:flex-row gap-12">
+                    <!-- Contact Form -->
+                    <div class="lg:w-2/3 bg-brand-panel p-8 rounded-lg shadow-xl">
+                        <h2 class="text-3xl font-bold text-white mb-6">Send Us a Message</h2>
+                        <form id="contact-form">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                                <div>
+                                    <label for="contact-name" class="block text-sm font-medium text-brand-text-muted">Name</label>
+                                    <input type="text" id="contact-name" required class="mt-1 form-input">
+                                </div>
+                                <div>
+                                    <label for="contact-email" class="block text-sm font-medium text-brand-text-muted">Email</label>
+                                    <input type="email" id="contact-email" required class="mt-1 form-input">
+                                </div>
+                            </div>
+                            <div class="mb-6">
+                                <label for="contact-message" class="block text-sm font-medium text-brand-text-muted">Message</label>
+                                <textarea id="contact-message" rows="5" required class="mt-1 form-input"></textarea>
+                            </div>
+                            <button type="submit" class="btn-primary w-full">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                    <!-- Contact Info -->
+                    <div class="lg:w-1/3">
+                        <div class="bg-brand-primary text-white p-8 rounded-lg shadow-xl">
+                            <h2 class="text-3xl font-bold text-white mb-6">Contact Information</h2>
+                            <div class="space-y-4">
+                                <div>
+                                    <h3 class="font-bold text-brand-gold">Address</h3>
+                                    <p>123 Vineyard Lane, Napa Valley, CA 94558</p>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-brand-gold">Opening Hours</h3>
+                                    <p>Wednesday - Sunday: 11am - 6pm</p>
+                                    <p>Monday - Tuesday: By Appointment</p>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-brand-gold">Email</h3>
+                                    <p>contact@vinoveritas.com</p>
+                                </div>
+                                <!-- Social Links -->
+                                <div class="flex space-x-4 pt-4">
+                                    <a href="#" class="https://x.com/karos812052?t=Fypnd9UiKuTrd00fUg2PEg&s=09">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                                    </a>
+                                    <a href="#" class="text-white hover:text-brand-gold transition duration-300">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                                    </a>
+                                    <a href="#" class="text-white hover:text-brand-gold transition duration-300">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 1.4 3 3.4 3 5.4 0 4.6-4 8.2-8 8.2-2.3 0-4.4-.9-6-2.4C5 18.2 2 16.3 2 12.3c0-3.3 2.7-6 6-6 1 0 1.8.3 2.5.8C11.8 6.5 13 6 14 6c1.4 0 2.5.8 3 1.5 1.7-1 3.2-2 4.6-2.4z"></path></svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Map Embed -->
+                <div class="mt-16 rounded-lg overflow-hidden shadow-xl" style="filter: invert(90%) hue-rotate(180deg);">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12533.486280603887!2d-122.48679100000001!3d38.5028309!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8084540705c56f59%3A0x57f350b9b3e17409!2sNapa%2C%2C%20CA%2094559!5e0!3m2!1sen!2sus!4v1678888888888!5m2!1sen!2sus" 
+                        width="100%" 
+                        height="450" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+
+        <!--Cart Page -->
+        <section id="page-cart" class="page">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-24 min-h-[60vh]">
+                <h1 class="text-4xl font-bold text-center text-white mb-12">Your Shopping Cart</h1>
+                <div id="cart-container" class="lg:w-3/4 mx-auto">
+                    <!-- Cart items will be injected here -->
+                    <div id="cart-items-list">
+                    </div>
+                    
+                    <!-- Cart Empty Message -->
+                    <div id="cart-empty-msg" class="text-center text-brand-text-muted py-16 hidden">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-24 w-24 mx-auto text-brand-text-muted" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                        </svg>
+                        <p class="text-xl mt-4">Your cart is empty.</p>
+                        <div class="flex justify-end gap-4 mt-6">
+                            <button id="empty-cart-btn" class="btn-secondary py-3 px-8">
+                                Empty Cart
+                            </button>
+                            <button class="nav-link mt-6 btn-primary" data-page="shop">
+                                Continue Shopping
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Cart Summary -->
+                    <div id="cart-summary" class="mt-8 text-right hidden">
+                        <h2 class="text-2xl font-bold text-white">Subtotal: <span id="cart-subtotal" class="text-brand-gold ml-2">$0.00</span></h2>
+                        <p class="text-brand-text-muted mt-2">Taxes and shipping calculated at checkout.</p>
+                        <button id="checkout-btn" class="nav-link mt-6 btn-primary bg-brand-primary hover:bg-opacity-80" data-page="checkout">
+                            Proceed to Checkout →
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--Checkout Page -->
+        <section id="page-checkout" class="page">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-24">
+                <h1 class="text-4xl font-bold text-center text-white mb-12">Checkout</h1>
+
+                <div class="text-center mb-8">
+                    <button class="nav-link text-brand-text-muted hover:text-brand-primary inline-flex items-center" data-page="cart">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
+                        Back to Cart
+                    </button>
+                </div>
+
+                <div class="flex flex-col lg:flex-row gap-12 max-w-6xl mx-auto">
+                    <!-- Checkout Form -->
+                    <div class="lg:w-2/3 bg-brand-panel p-8 rounded-lg shadow-xl">
+                        <form id="checkout-form">
+                            <h2 class="text-2xl font-bold text-white mb-6">1. Shipping Information</h2>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <input type="text" placeholder="First Name" required class="form-input">
+                                <input type="text" placeholder="Last Name" required class="form-input">
+                                <input type="email" placeholder="Email" required class="form-input md:col-span-2">
+                                <input type="text" placeholder="Address" required class="form-input md:col-span-2">
+                                <input type="text" placeholder="City" required class="form-input">
+                                <input type="text" placeholder="State" required class="form-input">
+                                <input type="text" placeholder="Zip Code" required class="form-input">
+                                <input type="text" placeholder="Country" required class="form-input">
+                            </div>
+                            
+                            <h2 class="text-2xl font-bold text-white mt-10 mb-6">2. Payment Method</h2>
+                            <div class="grid grid-cols-1 gap-6">
+                                <input type="text" placeholder="Card Number" required class="form-input">
+                                <input type="text" placeholder="Name on Card" required class="form-input">
+                                <div class="grid grid-cols-2 gap-6">
+                                    <input type="text" placeholder="MM / YY" required class="form-input">
+                                    <input type="text" placeholder="CVC" required class="form-input">
+                                </div>
+                            </div>
+
+                            <button type="submit" class="w-full mt-10 btn-primary">
+                                Place Order
+                            </button>
+                        </form>
+                    </div>
+                    <!-- Order Summary -->
+                    <div class="lg:w-1/3">
+                        <div class="bg-brand-panel p-6 rounded-lg shadow-lg">
+                            <h2 class="text-2xl font-bold text-white mb-6">Order Summary</h2>
+                            <div id="checkout-summary-items" class="space-y-4 mb-6 max-h-64 overflow-y-auto">
+                                <!-- Checkout items injected by JS -->
+                            </div>
+                            <div class="border-t border-brand-text-muted/30 pt-4 space-y-2">
+                                <div class="flex justify-between text-brand-text-muted">
+                                    <span>Subtotal</span>
+                                    <span id="checkout-subtotal">$0.00</span>
+                                </div>
+                                <div class="flex justify-between text-brand-text-muted">
+                                    <span>Shipping</span>
+                                    <span>$50.00</span>
+                                </div>
+                                <div class="flex justify-between text-brand-text-muted">
+                                    <span>Taxes</span>
+                                    <span id="checkout-taxes">$0.00</span>
+                                </div>
+                                <div class="flex justify-between text-2xl font-bold text-white mt-4">
+                                    <span>Total</span>
+                                    <span id="checkout-total">$0.00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- ===== Order Confirmation Page ===== -->
+        <section id="page-confirmation" class="page">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-32 text-center min-h-[60vh]">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-24 w-24 mx-auto text-brand-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <h1 class="text-5xl font-bold text-white mt-8 mb-6">Thank You for Your Order!</h1>
+                <p class="text-xl text-brand-text-muted mb-10 max-w-2xl mx-auto">Your order has been placed successfully. A confirmation email is on its way to you.</p>
+                <button class="nav-link btn-primary" data-page="shop">
+                    Continue Shopping
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brand-panel text-brand-text-muted">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                <!-- About -->
+                <div>
+                    <h3 class="text-2xl font-bold text-white mb-4">VinoVeritas</h3>
+                    <p>Savor the Art of Wine. Curated collections from the finest vineyards, delivered to your door.</p>
+                </div>
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="font-bold text-lg text-white mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="nav-link hover:text-brand-primary" data-page="shop">Shop</a></li>
+                        <li><a href="#" class="nav-link hover:text-brand-primary" data-page="membership">Membership</a></li>
+                        <li><a href="#" class="nav-link hover:text-brand-primary" data-page="about">Our Story</a></li>
+                        <li><a href="#" class="nav-link hover:text-brand-primary" data-page="contact">Contact</a></li>
+                    </ul>
+                </div>
+                <!-- Legal -->
+                <div>
+                    <h4 class="font-bold text-lg text-white mb-4">Legal</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-brand-primary">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-brand-primary">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-brand-primary">Shipping & Returns</a></li>
+                    </ul>
+                </div>
+                <!-- Newsletter -->
+                <div>
+                    <h4 class="font-bold text-lg text-white mb-4">Subscribe</h4>
+                    <p class="mb-4">Get 10% off your first order by subscribing to our newsletter.</p>
+                    <form id="footer-newsletter">
+                        <label for="footer-email" class="sr-only">Email</label>
+                        <div class="flex">
+                            <input type="email" id="footer-email" placeholder="Your email" class="w-full rounded-l-lg p-2 text-gray-900 focus:outline-none">
+                            <button type="submit" class="bg-brand-primary hover:bg-opacity-80 text-white font-bold p-2 rounded-r-lg">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 16.571V11a1 1 0 112 0v5.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
+                                </svg>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="border-t border-brand-text-muted/30 mt-12 pt-8 text-center">
+                &copy; 2025 @VinoVeritas. All rights reserved.
+            </div>
+        </div>
+    </footer>
+    
+    <!--Global Modals/Popups -->
+
+    <!-- Newsletter Popup -->
+    <div id="newsletter-popup" class="hidden fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 p-4">
+        <div class="bg-brand-panel rounded-lg shadow-2xl max-w-md w-full relative overflow-hidden flex flex-col md:flex-row">
+            <!-- Close Button -->
+            <button id="close-popup-btn" class="absolute top-3 right-3 text-brand-text-muted hover:text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+            </button>
+            
+            <div class="w-full md:w-1/2 hidden md:block">
+                <img src="https://images.unsplash.com/photo-1587888191477-129606c47875?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&q=80&w=300" alt="Wine" class="w-full h-full object-cover">
+            </div>
+            
+            <div class="w-full md:w-1/2 p-8">
+                <h2 class="text-3xl font-bold text-white mb-4">Welcome!</h2>
+                <p class="text-brand-text-muted mb-6">Join our newsletter and get <span class="font-bold text-brand-gold">10% OFF</span> your first order.</p>
+                <form id="popup-form">
+                    <div class="mb-4">
+                        <label for="popup-email" class="sr-only">Email</label>
+                        <input type="email" id="popup-email" placeholder="Enter your email" required class="form-input w-full">
+                    </div>
+                    <button type="submit" class="btn-primary w-full">
+                        Subscribe
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!--Toast Notification -->
+    <div id="toast-notification" class="fixed bottom-5 right-5 bg-brand-text text-brand-dark py-3 px-6 rounded-lg shadow-lg opacity-0 translate-y-20 transition-all duration-300 z-50">
+        <span id="toast-message">Item added to cart!</span>
+    </div>
+
+    <!--Quick View Modal-->
+    <div id="quick-view-modal" class="hidden fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 p-4">
+        <!-- Modal Content -->
+        <div class="bg-brand-panel rounded-lg shadow-2xl max-w-4xl w-full relative overflow-hidden flex flex-col md:flex-row max-h-[90vh]">
+            <!-- Close Button -->
+            <button id="qv-close-btn" class="absolute top-4 right-4 text-brand-text-muted hover:text-white z-10">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+            </button>
+            
+            <!-- Image Panel -->
+            <div class="w-full md:w-1/2">
+                <img id="qv-image" src="/placeholder.svg" alt="Wine Bottle" class="w-full h-64 md:h-full object-cover">
+            </div>
+            
+            <!-- Details Panel -->
+            <div class="w-full md:w-1/2 p-6 md:p-8 overflow-y-auto">
+                <h2 id="qv-name" class="text-4xl font-bold text-white mb-2">Wine Name</h2>
+                
+                <div class="flex justify-between items-center mb-4">
+                    <span id="qv-price" class="text-3xl font-bold text-brand-gold">$0.00</span>
+                    <div id="qv-avg-rating" class="flex items-center">
+                        <!-- Average stars will be rendered here -->
+                    </div>
+                </div>
+
+                <p id="qv-description" class="text-brand-text-muted mb-6">Wine description...</p>
+                
+                <div id="qv-details" class="text-sm text-brand-text-muted mb-6 space-y-2">
+                    <!-- Details will be rendered here -->
+                </div>
+                
+                <!-- Add to Cart -->
+                <div class="flex items-center gap-4 mb-8">
+                    <label for="qv-quantity" class="sr-only">Quantity</label>
+                    <input type="number" id="qv-quantity" value="1" min="1" class="form-input w-20 text-center">
+                    <button id="qv-add-to-cart-btn" class="w-full btn-primary">
+                        Add to Cart
+                    </button>
+                </div>
+                
+                <!-- Reviews -->
+                <div class="border-t border-brand-text-muted/30 pt-6">
+                    <h3 class="text-2xl font-bold text-white mb-4">Ratings & Reviews</h3>
+                    
+                    <!-- Review List -->
+                    <div id="qv-reviews-list" class="space-y-4 mb-6 max-h-40 overflow-y-auto pr-2">
+                        <!-- Reviews will be rendered here -->
+                    </div>
+                    
+                    <!-- Write a Review Form -->
+                    <form id="qv-review-form">
+                        <h4 class="text-lg font-bold text-white mb-3">Write a Review</h4>
+                        <input type="hidden" id="qv-review-wine-id" value="">
+                        
+                        <div class="mb-3">
+                            <label class="block text-sm font-medium text-brand-text-muted mb-1">Your Rating</label>
+                            <div class="star-rating">
+                                <input type="radio" id="star5" name="rating" value="5" required/><label for="star5" title="5 stars">★</label>
+                                <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="4 stars">★</label>
+                                <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="3 stars">★</label>
+                                <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="2 stars">★</label>
+                                <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="1 star">★</label>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="qv-review-name" class="block text-sm font-medium text-brand-text-muted">Name</label>
+                            <input type="text" id="qv-review-name" required class="mt-1 form-input">
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="qv-review-comment" class="block text-sm font-medium text-brand-text-muted">Comment</label>
+                            <textarea id="qv-review-comment" rows="3" required class="mt-1 form-input"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full btn-secondary">
+                            Submit Review
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="app.js" defer></script>
+</body>
+</html>
